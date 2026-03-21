@@ -76,3 +76,19 @@ st.subheader("Business Impact")
 st.write(f"Loss: ${loss}")
 st.write(f"Campaign Cost: ${campaign}")
 st.write(f"Total Cost: ${total}")
+
+# Default predictions
+y_pred_default = model.predict(X_test)
+
+tn_d, fp_d, fn_d, tp_d = confusion_matrix(y_test, y_pred_default).ravel()
+
+loss_default = fn_d * cost_churn + (tp_d + fp_d) * cost_retention
+
+improvement = loss_default - total
+percent = round(improvement / loss_default * 100, 2)
+
+st.subheader("📉 Cost Optimization")
+st.write(f"Cost Reduction: ${improvement}")
+st.write(f"Improvement: {percent}%")
+
+st.success("✅ Successfully reduced business cost using ML optimization!")
