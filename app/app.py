@@ -10,7 +10,7 @@ st.title("📊 Customer Churn Prediction Dashboard")
 uploaded_file = st.file_uploader("Upload Telco Churn Dataset", type=["csv"])
 
 if uploaded_file is None:
-    st.warning("Please upload a CSV file to continue 👆")
+    st.warning("Please upload a CSV file to continue ")
     st.stop()
 
 df = pd.read_csv(uploaded_file)
@@ -87,8 +87,8 @@ loss_default = fn_d * cost_churn + (tp_d + fp_d) * cost_retention
 improvement = loss_default - total
 percent = round(improvement / loss_default * 100, 2)
 
-st.subheader("📉 Cost Optimization")
+st.subheader("Cost Optimization")
 st.write(f"Cost Reduction: ${improvement}")
 st.write(f"Improvement: {percent}%")
 
-st.success("✅ Successfully reduced business cost using ML optimization!")
+st.success("Successfully reduced business cost using ML optimization!")
